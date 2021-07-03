@@ -7,11 +7,17 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index",
+    "watch": "nodemon index",
+    "test": "jest"
   },
   "author": "Bernie McKnight",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^8.1.1"
+    "inquirer": "^8.1.1",
+    "jest": "^27.0.6"
+  },
+    "devDependencies": {
+    "jest": "^24.8.0"
   }
 }
