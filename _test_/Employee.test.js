@@ -33,11 +33,11 @@ describe("Employee", () =>{
   //   const id = 55434;
   //   const email = "car@men.com";
   // })
-  it("generates roll", () => {
+  it("generates role", () => {
     const name = "Carmen";
     const id = 55434;
     const email = "car@men.com";
-    const roll = test;
-    expect(new Employee(name, id, email, roll).roll).toBe(roll);
+    const role = test;
+    expect(new Employee(name, id, email, role).role).toBe(role);
   });
 });

@@ -22,7 +22,7 @@ describe("Manager", () =>{
   it("returns email", () => {
     expect(testManager.email).toBe("bob@bob.com");
   });
-  it("returns roll", () => {
-    expect(testManager.roll).toBe("manager");
+  it("returns role", () => {
+    expect(testManager.role).toBe("manager");
   });
 });
