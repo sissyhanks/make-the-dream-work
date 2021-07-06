@@ -39,4 +39,32 @@ describe("Employee", () =>{
     const email = "car@men.com";
     expect(new Employee(name, id, email).role).toBe("Employee");
   });
+  it("returns name on getName function being called", () => {
+    const name = "Carmen";
+    const id = 55434;
+    const email = "car@men.com";
+    const testEmployee = new Employee(name, id, email);
+    expect(testEmployee.getName()).toBe("Carmen");
+  });
+  it("returns id on getId functions being called", () => {
+    const name = "Carmen";
+    const id = 55434;
+    const email = "car@men.com";
+    const testEmployee = new Employee(name, id, email);
+    expect(testEmployee.getId()).toBe(id);
+  });
+  it("returns email on getEmail function being called", () => {
+    const name = "Carmen";
+    const id = 55434;
+    const email = "car@men.com";
+    const testEmployee = new Employee(name, id, email);
+    expect(testEmployee.getEmail()).toBe(email);
+  });
+  it("returns 'Employee' default when getRole function is called", () => {
+    const name = "Carmen";
+    const id = 55434;
+    const email = "car@men.com";
+    const testEmployee = new Employee(name, id, email);
+    expect(testEmployee.getRole()).toBe("Employee");
+  });
 });
