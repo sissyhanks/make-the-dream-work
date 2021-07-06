@@ -8,27 +8,54 @@ const Intern = require("./lib/intern");
 
 let myTeamArray = [];
 
+const startQuestion = [
+  {
+    type: 'input',
+    message: 'Please enter your office number.',
+    name: 'officeNumber',
+  },
+  {
+    type: 'list',
+    message: 'Are you the team manager?',
+    name: 'dataEnter',
+    choices: ['yes', 'no'],
+  },
+]
+
+const managerStart = [
+  {
+    type: 'list',
+    message: ' "Never doubt that a small group of thoughtful, concerned citizens can change the world. \nIndeed it is the only thing that ever has." \n--Margaret Mead \n\nTo build a contact page for your small group of thoughtful, concerned citizens, provide the following information for each member of your team. ',
+    name: 'isManager',
+    choices: ['Start by entering your information to the following prompts. Press return to begin.'],
+  },
+]
+
+const otherStart = [
+  {
+    type: 'list',
+    message:  ' "I always did something I was a little not ready to do. \nI think that\'s how you grow. \nWhen there\'s that moment of \n"Wow, I\'m not really sure I can do this," \nand you push through those moments, that\'s when you have a breakthrough." \n— Marissa Mayer \n\nWe designed this program for managerial use, but never fear; you can use it too. \nWe believe in you! \nTo build a team contact page, provide the following prompts, first for the manager and then for each team member. ',
+    name: 'isOther',
+    choices: ['Start by filling out the following prompts with the the manager\'s information. press return to begin.']
+  },
+]
+
 
 const employeeQuestions = [
   {
     type: 'input',
-    message: 'Please enter your name',
+    message: 'name',
     name: 'employeeName',
   },
   {
     type: 'input',
-    message: 'Please enter your ID number',
+    message: 'ID number',
     name: 'employeeIdn',        
   },
   {
     type: 'input',
-    message: 'please enter your email',
+    message: 'email',
     name: 'employeeEmail',        
-  },
-  {
-    type: 'input',
-    message: 'Please enter your office number',
-    name: 'employeeExtention',        
   },
   {
     type: 'list',
@@ -38,14 +65,55 @@ const employeeQuestions = [
   },
 ];
 
+const internQuestions = [
+  {
+    type: 'input',
+    message: 'What school does this intern attend?',
+    name: 'internSchool',
+  }
+];
+
+const engineerQuestions = [
+  {
+    type: 'input',
+    message: 'What is this engineer\'s gitHub ID',
+    name: 'git',
+  }
+]
+
 // go to write HTML
 
+
+
 function init() {
-  inquirer.prompt(employeeQuestions)
+  inquirer.prompt(startQuestion)
   .then(function(response){
-    const reply = response;
-    console.log(reply);
-  })
+    switch (response.dataEnter){
+      case "yes":
+        inquirer.prompt(managerStart)
+        .then(function(response){
+          manager();
+        });
+        break;
+      case "no":
+        inquirer.prompt(otherStart)
+        .then(function(response){
+          manager();
+        });
+    }
+  });
 }
 
+
+function manager() {
+   
+      inquirer.prompt(employeeQuestions)
+      .then(function(response){
+        const reply = response;
+        console.log(reply);
+      });
+    
+  }
+
 init();
+
