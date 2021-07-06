@@ -37,7 +37,6 @@ describe("Employee", () =>{
     const name = "Carmen";
     const id = 55434;
     const email = "car@men.com";
-    const role = test;
-    expect(new Employee(name, id, email, role).role).toBe(role);
+    expect(new Employee(name, id, email).role).toBe("Employee");
   });
 });
