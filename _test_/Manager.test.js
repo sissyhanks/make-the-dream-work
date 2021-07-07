@@ -2,7 +2,7 @@ const Manager = require("../lib/manager");
 
 describe("Manager", () =>{
   const officeNumber = 7734;
-  const testManager = new Manager("Bob", 123, "bob@bob.com", "manager", officeNumber);
+  const testManager = new Manager("Bob", 123, "bob@bob.com", officeNumber);
   
   it("Returns an object", () => {
       expect(typeof(testManager)).toBe("object");

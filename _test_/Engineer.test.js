@@ -4,9 +4,9 @@ describe("Engineer", () =>{
   const name = "Donna";
   const id = 227;
   const email = "Donna@donna.com";
-  const role = "engineer";
+
   const git = "gitdonna";
-  const testEngineer = new Engineer(name, id, email, role, git);
+  const testEngineer = new Engineer(name, id, email, git);
   it("Returns an object", () => {
     expect(typeof(new Engineer())).toBe("object");
   });
@@ -24,6 +24,6 @@ describe("Engineer", () =>{
     expect(testEngineer.email).toBe(email);
   });
   it("generates role", () => {
-    expect(testEngineer.role).toBe(role);
+    expect(testEngineer.role).toBe("engineer");
   });
 });

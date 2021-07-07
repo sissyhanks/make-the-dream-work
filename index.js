@@ -10,11 +10,6 @@ let myTeamArray = [];
 
 const startQuestion = [
   {
-    type: 'input',
-    message: 'Please enter your office number.',
-    name: 'officeNumber',
-  },
-  {
     type: 'list',
     message: 'Are you the team manager?',
     name: 'dataEnter',
@@ -45,25 +40,27 @@ const employeeQuestions = [
   {
     type: 'input',
     message: 'name',
-    name: 'employeeName',
+    name: 'name',
   },
   {
     type: 'input',
     message: 'ID number',
-    name: 'employeeIdn',        
+    name: 'id',        
   },
   {
     type: 'input',
     message: 'email',
-    name: 'employeeEmail',        
-  },
-  {
-    type: 'list',
-    message: 'Would you like to add a member to your team?',
-    name: 'moveOn',  
-    choices: ["Add Intern", "Add Engineer", "finish team setup"],      
+    name: 'email',        
   },
 ];
+
+const managerQuestions = [
+  {
+    type: 'input',
+    message: 'Please enter your office number.',
+    name: 'officeNumber',
+  },
+]
 
 const internQuestions = [
   {
@@ -79,6 +76,15 @@ const engineerQuestions = [
     message: 'What is this engineer\'s gitHub ID',
     name: 'git',
   }
+]
+
+const menu = [
+  {
+    type: 'list',
+    message: 'Would you like to add a member to your team?',
+    name: 'moveOn',  
+    choices: ["Add Intern", "Add Engineer", "finish team setup"],      
+  },
 ]
 
 // go to write HTML
@@ -109,8 +115,17 @@ function manager() {
    
       inquirer.prompt(employeeQuestions)
       .then(function(response){
-        const reply = response;
-        console.log(reply);
+        const name = response.name;
+        const id = response.id;
+        const email = response.email;
+        const employee = new Employee(name, id, email);
+        console.log(employee);
+        inquirer.prompt(managerQuestions)
+        .then(function(response){
+          const officeNumber = response.officeNumber;
+          const manager = new Manager(employee, "manager", response.officeNumber);
+          console.log(manager);
+        })
       });
     
   }

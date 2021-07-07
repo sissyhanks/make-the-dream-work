@@ -4,9 +4,8 @@ describe("Intern", () =>{
   const name = "Rick";
   const id = 1999;
   const email = "rick@rick.com";
-  const role = "intern";
   const school = "Top School";
-  const testIntern = new Intern(name, id, email, role, school)
+  const testIntern = new Intern(name, id, email,  school)
   it("returns an object", () => {
       expect(typeof(new Intern())).toBe("object");
   });
