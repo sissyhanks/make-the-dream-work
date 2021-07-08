@@ -98,37 +98,67 @@ function init() {
       case "yes":
         inquirer.prompt(managerStart)
         .then(function(response){
-          manager();
+          employee();
         });
         break;
       case "no":
         inquirer.prompt(otherStart)
         .then(function(response){
-          manager();
+          employee();
         });
     }
   });
 }
 
 
-function manager() {
-   
-      inquirer.prompt(employeeQuestions)
-      .then(function(response){
-        const name = response.name;
-        const id = response.id;
-        const email = response.email;
-        const employee = new Employee(name, id, email);
-        console.log(employee);
-        inquirer.prompt(managerQuestions)
-        .then(function(response){
-          const officeNumber = response.officeNumber;
-          const manager = new Manager(employee, "manager", response.officeNumber);
-          console.log(manager);
-        })
-      });
+
+function employee() {
     
-  }
+  inquirer.prompt(employeeQuestions)
+  .then(function(response){
+    const name = response.name;
+    const id = response.id;
+    const email = response.email;
+    const employee = new Employee(name, id, email);
+    console.log(employee);
+    inquirer.prompt(managerQuestions)
+      .then(function(response){
+        const officeNumber = response.officeNumber;
+        const manager = new Manager(employee.name, employee.id, employee.email, officeNumber);
+        console.log(manager);
+        inquirer.prompt(menu)
+        .then(function(response){
+          const role = response;
+          console.log(role);
+        })
+        
+      });
+  });
+}
+
+
+
+
+// function manager() {
+//   const buildMe = ${employee}
+//   inquirer.prompt(managerQuestions)
+//       .then(function(response){
+//         const officeNumber = response.officeNumber;
+//         const manager = new Manager(employee.name, employee.id, employee.email, officeNumber);
+//         console.log(manager);
+//         inquirer.prompt(menu)
+//         .then(function(response){
+//           const role = response;
+//           console.log(role);
+//         })
+        
+//       });
+//     }
+  
+
+function buildTeam(){
+
+}
 
 init();
 
