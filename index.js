@@ -35,7 +35,6 @@ const otherStart = [
   },
 ]
 
-
 const employeeQuestions = [
   {
     type: 'input',
@@ -89,8 +88,6 @@ const menu = [
 
 // go to write HTML
 
-
-
 function init() {
   inquirer.prompt(startQuestion)
   .then(function(response){
@@ -110,10 +107,7 @@ function init() {
   });
 }
 
-
-
 function employee() {
-    
   inquirer.prompt(employeeQuestions)
   .then(function(response){
     const name = response.name;
@@ -125,40 +119,70 @@ function employee() {
       .then(function(response){
         const officeNumber = response.officeNumber;
         const manager = new Manager(employee.name, employee.id, employee.email, officeNumber);
-        console.log(manager);
-        inquirer.prompt(menu)
-        .then(function(response){
-          const role = response;
-          console.log(role);
-        })
+        myTeamArray.push(manager);
+        console.log(myTeamArray);
+        teamFill();
         
       });
   });
 }
 
-
-
-
-// function manager() {
-//   const buildMe = ${employee}
-//   inquirer.prompt(managerQuestions)
-//       .then(function(response){
-//         const officeNumber = response.officeNumber;
-//         const manager = new Manager(employee.name, employee.id, employee.email, officeNumber);
-//         console.log(manager);
-//         inquirer.prompt(menu)
-//         .then(function(response){
-//           const role = response;
-//           console.log(role);
-//         })
-        
-//       });
-//     }
-  
-
-function buildTeam(){
-
+function teamFill() {
+  inquirer.prompt(menu)
+  .then(function(response){
+    switch (response.moveOn){
+      case "Add Intern":
+        intern();
+        break;
+      case "Add Engineer":
+        engineer();
+        break;
+      case "finish team setup":
+        console.log(myTeamArray);
+    }
+  });
 }
 
-init();
+function intern() {
+    
+  inquirer.prompt(employeeQuestions)
+  .then(function(response){
+    const name = response.name;
+    const id = response.id;
+    const email = response.email;
+    const employee = new Employee(name, id, email);
+    console.log(employee);
+    inquirer.prompt(internQuestions)
+      .then(function(response){
+        const school = response.internSchool;
+        const intern = new Intern(employee.name, employee.id, employee.email, school);
+        myTeamArray.push(intern);
+        console.log(myTeamArray);
+        teamFill();
+        })
+        
+      });
+  }
 
+function engineer() {
+    
+  inquirer.prompt(employeeQuestions)
+  .then(function(response){
+    const name = response.name;
+    const id = response.id;
+    const email = response.email;
+    const employee = new Employee(name, id, email);
+    console.log(employee);
+    inquirer.prompt(engineerQuestions)
+      .then(function(response){
+        const git = response.git;
+        const intern = new Engineer(employee.name, employee.id, employee.email, git);
+        myTeamArray.push(intern);
+        console.log(myTeamArray);
+        teamFill();
+        })
+        
+      });
+  }
+
+init();
