@@ -200,7 +200,7 @@ function makeMembers(){
   let members = [];
   myTeamArray.forEach(function(mem) {
     if (mem.role === "manager") {
-      members.push(`<div class="row d-flex justify-content-center">
+      members.push(`
         <div class="col-4 mb-2">
           <div class="card">
             <div class="card-header" style="color: white; background-color: #5da271;">
@@ -216,9 +216,9 @@ function makeMembers(){
           </div>
         </div>
         </div>
-      </div>`);
+      `);
     } if (mem.role === "intern") {
-      members.push(`<div class="row d-flex justify-content-center">
+      members.push(`
         <div class="col-4 mb-2">
           <div class="card">
             <div class="card-header" style="color: white; background-color: #5da271;">
@@ -234,9 +234,9 @@ function makeMembers(){
           </div>
         </div>
         </div>
-      </div>`);
+      `);
     } if (mem.role === "engineer") {
-      members.push(`<div class="row d-flex justify-content-center">
+      members.push(`
         <div class="col-4 mb-2">
           <div class="card">
             <div class="card-header" style="color: white; background-color: #5da271;">
@@ -249,7 +249,7 @@ function makeMembers(){
               <li class="list-group-item" style="color: #241623;">employee id ${mem.id}</li>
               <li class="list-group-item" ><a href="https://github.com/${mem.git}" class="text-decoration-none" style="color: #3087D9;">GitHub Profile</a></li>
             </ul>
-          </div>
+          
         </div>
         </div>
       </div>`);
@@ -277,7 +277,9 @@ function makeMembers(){
     </div>
 
 <div class="container">
-${members.join()}
+<div class="row d-flex justify-content-center">
+${members.join('')}
+</div>
 </div>
   </body>
 </html>`;
