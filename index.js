@@ -5,6 +5,7 @@ const Employee = require("./lib/employee");
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
+// const makeMembers = require("./dist/makeMembers");
 
 let myTeamArray = [];
 
@@ -138,7 +139,7 @@ function teamFill() {
         engineer();
         break;
       case "finish team setup":
-        console.log(myTeamArray);
+        makeMembers();
     }
   });
 }
@@ -186,3 +187,106 @@ function engineer() {
   }
 
 init();
+
+function writeToFile(fileName, data) {
+    fs.writeFileSync(fileName, data, function(error){
+        if(error) throw error;
+        console.log("file generated");
+    })
+}
+
+
+function makeMembers(){
+  let members = [];
+  myTeamArray.forEach(function(mem) {
+    if (mem.role === "manager") {
+      members.push(`<div class="row d-flex justify-content-center">
+        <div class="col-4 mb-2">
+          <div class="card">
+            <div class="card-header" style="color: white; background-color: #5da271;">
+              <h5>${mem.name}</h5>
+              <h6><i class="fas fa-coffee"></i></i> <span>${mem.role}</span> </h6>
+            </div>
+          <div class="card-body" style="color: #241623; background-color: #f9f1f2;">
+            <ul class="list-group" style="color: #241623;">
+              <li class="list-group-item" ><a href="mailto:${mem.email}" class="text-decoration-none" style="color: #3087D9;">${mem.email}</a></li>
+              <li class="list-group-item" style="color: #241623;">employee id ${mem.id}</li>
+              <li class="list-group-item" style="color: #241623;">office number ${mem.officeNumber}</li>
+            </ul>
+          </div>
+        </div>
+        </div>
+      </div>`);
+    } if (mem.role === "intern") {
+      members.push(`<div class="row d-flex justify-content-center">
+        <div class="col-4 mb-2">
+          <div class="card">
+            <div class="card-header" style="color: white; background-color: #5da271;">
+              <h5>${mem.name}</h5>
+              <h6><i class="fas fa-user-graduate"></i> <span>${mem.role}</span> </h6>
+            </div>
+          <div class="card-body" style="color: #241623; background-color: #f9f1f2;">
+            <ul class="list-group" style="color: #241623;">
+              <li class="list-group-item" ><a href="mailto:${mem.email}" class="text-decoration-none" style="color: #3087D9;">${mem.email}</a></li>
+              <li class="list-group-item" style="color: #241623;">employee id ${mem.id}</li>
+              <li class="list-group-item" style="color: #241623;">school ${mem.school}</li>
+            </ul>
+          </div>
+        </div>
+        </div>
+      </div>`);
+    } if (mem.role === "engineer") {
+      members.push(`<div class="row d-flex justify-content-center">
+        <div class="col-4 mb-2">
+          <div class="card">
+            <div class="card-header" style="color: white; background-color: #5da271;">
+              <h5>${mem.name}</h5>
+              <h6><i class="fas fa-glasses"></i> <span>${mem.role}</span> </h6>
+            </div>
+          <div class="card-body" style="color: #241623; background-color: #f9f1f2;">
+            <ul class="list-group" style="color: #241623;">
+              <li class="list-group-item" ><a href="mailto:${mem.email}" class="text-decoration-none" style="color: #3087D9;">${mem.email}</a></li>
+              <li class="list-group-item" style="color: #241623;">employee id ${mem.id}</li>
+              <li class="list-group-item" ><a href="https://github.com/${mem.git}" class="text-decoration-none" style="color: #3087D9;">GitHub Profile</a></li>
+            </ul>
+          </div>
+        </div>
+        </div>
+      </div>`);
+    }
+    let html =  `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Team</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="d-flex align-items-center justify-content-center" style="margin-bottom: 4em; height: 8em; width: 100%; background-color:#c84630">
+      <div class="row">
+        <h4 class="col" style="color: white;"> My Team</div>
+      </div>
+    </div>
+
+<div class="container">
+${members.join()}
+</div>
+  </body>
+</html>`;
+fs.writeFile("./dist/myTeam.html", html, function(err) {
+        if (err) {
+            console.log(err);
+        }
+    });
+    console.log("file written");
+    return ;
+  });
+}
