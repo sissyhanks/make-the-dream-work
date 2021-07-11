@@ -10,9 +10,6 @@ describe("Manager", () =>{
   it("generates office number", () => {
     expect(testManager.officeNumber).toBe(officeNumber);
   });
-  it("returns office number as number", () => {
-    expect(typeof(testManager.officeNumber)).toBe("number");
-  });
   it("returns name", () => {
     expect(testManager.name).toBe("Bob");
   });

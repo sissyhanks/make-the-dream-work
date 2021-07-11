@@ -5,10 +5,10 @@ const Employee = require("./lib/employee");
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
-// const makeMembers = require("./dist/makeMembers");
 
 let myTeamArray = [];
 
+// opening question and welcome text / app directions
 const startQuestion = [
   {
     type: 'list',
@@ -36,6 +36,7 @@ const otherStart = [
   },
 ]
 
+//questions that correspond to general employee object
 const employeeQuestions = [
   {
     type: 'input',
@@ -62,6 +63,7 @@ const managerQuestions = [
   },
 ]
 
+//questions to round out specific employee types
 const internQuestions = [
   {
     type: 'input',
@@ -87,8 +89,7 @@ const menu = [
   },
 ]
 
-// go to write HTML
-
+// starts inquirer questions, detects if person entering info is manager or not and then moves on to employee info
 function init() {
   inquirer.prompt(startQuestion)
   .then(function(response){
@@ -107,6 +108,8 @@ function init() {
     }
   });
 }
+
+//asks employee inquirer and uses info to create employee object, then asks manager question and creates manager object & pushes it to myTeam array
 
 function employee() {
   inquirer.prompt(employeeQuestions)
@@ -128,6 +131,7 @@ function employee() {
   });
 }
 
+//function takes info from menu question and either builds intern or engineer objects or moves on to write HTML if finished with input
 function teamFill() {
   inquirer.prompt(menu)
   .then(function(response){
@@ -144,6 +148,7 @@ function teamFill() {
   });
 }
 
+//functions taking in intern & engineer info, build objects that are added to myTeamArray and then move back to menu question (build another employee or finish)
 function intern() {
     
   inquirer.prompt(employeeQuestions)
@@ -186,15 +191,7 @@ function engineer() {
       });
   }
 
-init();
-
-function writeToFile(fileName, data) {
-    fs.writeFileSync(fileName, data, function(error){
-        if(error) throw error;
-        console.log("file generated");
-    })
-}
-
+// function created different blocks of HTML depending on employee role, inserts those blocks into HTML body and then writes to file
 
 function makeMembers(){
   let members = [];
@@ -292,3 +289,6 @@ fs.writeFile("./dist/myTeam.html", html, function(err) {
     return ;
   });
 }
+
+//starts the program
+init();
