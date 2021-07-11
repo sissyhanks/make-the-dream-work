@@ -1,8 +1,7 @@
 # Make the Dream Work
 
 <!-- ![ALT](/path/​image.ext) -->
-<!-- [LINK NAME](https://www.linkaddress) -->
-<!-- [LINK NAME](https://www.linkaddress) -->
+<!-- [VIDEO DEMO](https://www.linkaddress) -->
 
 ![BADGE](https://img.shields.io/badge/license-MIT-blue.svg)
 
@@ -19,6 +18,9 @@
 ## Description
 
 This Node.js command-line application is for engineering team managers who want an an HTML webpage that displays information for each member of their team.
+
+<!-- ![ALT](/path/​image.ext) -->
+<!-- [example of executed HTML page](https://www.linkaddress) -->
 
 ## Installation
 
