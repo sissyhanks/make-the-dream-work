@@ -1,7 +1,8 @@
 # Make the Dream Work
 
-<!-- ![ALT](/path/​image.ext) -->
-<!-- [VIDEO DEMO](https://www.linkaddress) -->
+![tests pass](/assets/test.png)
+
+[VIDEO DEMO](https://youtu.be/ou1GfyM84Fg)
 
 ![BADGE](https://img.shields.io/badge/license-MIT-blue.svg)
 
@@ -19,8 +20,9 @@
 
 This Node.js command-line application is for engineering team managers who want an an HTML webpage that displays information for each member of their team.
 
-<!-- ![ALT](/path/​image.ext) -->
-<!-- [example of executed HTML page](https://www.linkaddress) -->
+![html example](/assets/html.png)
+
+[example of executed HTML page](https://sissyhanks.github.io/make-the-dream-work/)
 
 ## Installation
 
