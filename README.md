@@ -13,6 +13,7 @@
 - [Test](#test)
 - [Usage](#usage)
 - [Contributing](#contributing)
+- [Credits](#credits)
 - [License](#license)
 - [Contact](#contact)
 
@@ -40,10 +41,18 @@ this app can be used by managers and even people who are not managers, as long a
 
 Please open an issue if you are interested in contributing to this project.
 
+## Credits
+
+- [Node.js](https://nodejs.org/en/)
+- [enquirer](https://www.npmjs.com/package/enquirer)
+- [Jest](https://www.npmjs.com/package/jest)
+- [Bootstrap](https://getbootstrap.com/)
+- [Font Awesome](https://fontawesome.com/)
+
 ## License
 
 This project (and all code) is licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 ## Contact
 
-If you have any questions feel free to reach out by [email](mailto:sissyhanks@yahoo.com) or visit my [personal website](https://github.com/sissyhanks).
+If you have any questions feel free to reach out by [email](mailto:sissyhanks@yahoo.com) or visit my [personal website](https://sissyhanks.github.io/has-anybody-seen-the-butter/).
